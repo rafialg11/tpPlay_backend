@@ -2,11 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const videoSchema = new Schema({
-    thumbnail: {
-        type: String,
-        required: true
-    },
-    videoUrl: {
+    urlImgThumbnail: {
         type: String,
         required: true
     }
