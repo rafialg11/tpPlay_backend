@@ -11,11 +11,7 @@ const videoSchema = new Schema({
         required: true
     }
 })
-Schema.method("toJSON", function(){
-    const {__v, _id, ...object} = this.toObject()
-    object.id = _id
-    return object
-})
+
 
 module.exports = mongoose.model('Video', videoSchema);
 

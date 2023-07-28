@@ -15,14 +15,16 @@ db.once('connected', () => {
     console.log('Connected to database');
 })
 
-//const routes = require('./routes/routes');
 const app = express()
 
 app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }))
+//call routes
+require('./routes/videoRoute')(app)
+require('./routes/commentRoute')(app)
+require('./routes/productRoute')(app)
 
-//app.use('/api', routes);
 
 app.listen(3000, () => {
     console.log(`Server is running on port ${3000}`);

@@ -10,13 +10,3 @@ exports.findAll = async (_, res) => {
     }
 };
 
-exports.addVideo = async (req, res) => {
-    const { thumbnail, videoUrl } = req.body;
-    try {
-        videoToSave = await videoService.addVideo(thumbnail, videoUrl);
-        res.status(201).json({message: `Created!`, videoToSave});
-    }
-    catch (err) {
-        res.status(400).json({ message: err.message });
-    }
-}

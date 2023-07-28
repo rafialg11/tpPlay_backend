@@ -13,13 +13,13 @@ const productSchema = new Schema({
     price: {
         type: Number,
         required: true
+    },
+    videoId: {
+        type: String,
+        required: true
     }
 })
-Schema.method("toJSON", function(){
-    const {__v, _id, ...object} = this.toObject()
-    object.id = _id
-    return object
-})
+
 
 module.exports = mongoose.model('Product', productSchema);
 

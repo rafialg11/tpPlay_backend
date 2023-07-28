@@ -1,4 +1,4 @@
-const Video = require('../models/Video');
+const Video = require('../models/videoModel');
 
 exports.findAll = () => {
     return Video.find();
