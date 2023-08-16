@@ -4,5 +4,5 @@ module.exports = (app) => {
 
     router.get('/', product.findAll)
     router.get('/:id', product.findOne)
-    app.use('/api/product', router)
+    app.use('/api/products', router)
 }
