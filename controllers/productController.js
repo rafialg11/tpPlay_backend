@@ -1,11 +1,13 @@
 const productService = require('../services/productService');
 
-exports.findAll = async (_, res) => {
+exports.findAll = async (req, res) => {
     try {
-        const product = await productService.findAll();
-        res.status(200).json(product);
-    }
-    catch (err) {
+        const videoId = req.params.videoId; 
+
+        const products = await productService.findAll(videoId);
+
+        res.status(200).json(products);
+    } catch (err) {
         res.status(500).json({ message: err.message });
     }
 };
