@@ -18,7 +18,7 @@ db.once('connected', () => {
 
 const app = express()
 app.use(cors({
-    origin: 'https://tpplaybackend-production.up.railway.app/api/videos'
+    origin: 'http://localhost:3000'
 }));
 
 app.use(express.json())
