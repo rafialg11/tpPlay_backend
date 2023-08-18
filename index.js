@@ -18,7 +18,7 @@ db.once('connected', () => {
 
 const app = express()
 app.use(cors({
-    origin: 'https://tpplaybackend-production.up.railway.app/api' // Ganti dengan domain yang diizinkan
+    origin: 'https://tpplaybackend-production.up.railway.app/api/videos'
 }));
 
 app.use(express.json())
