@@ -4,9 +4,28 @@
 ```bash
 npm install express nodemon dotenv
 ```
-2. Set up MongoDB: Ensure you have a MongoDB database running locally or on a remote server. Update the connection string in your project's configuration file (e.g., app.js or index.js) to point to your MongoDB database.
+2. Setup MongoDB    
 
-3. Start the server: In your terminal, run:
+   Before running the application, you need to configure MongoDB. Follow these steps:
+    - **Database Setup**:
+       - Ensure you have a MongoDB database running locally or on a remote server.
+       - If you're using a remote server, collect the database connection string.
+    
+    - **Environment Variables**:
+    
+       - In your project's root directory, create a `.env` file if it doesn't exist.
+       - Inside the `.env` file, set the following environment variables:
+       
+         - `PORT`: Set the desired port number for your application (e.g., `PORT=3000`).
+         - `DATABASE_URL`: Set the MongoDB database connection string using the appropriate URL for your setup.
+    
+       Example `.env` file content:
+    
+       ```plaintext
+       PORT=3000
+       DATABASE_URL=mongodb://localhost:27017/mydatabase
+
+4. Start the server: In your terminal, run:
 
 ```bash
 npm start
