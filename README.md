@@ -36,28 +36,74 @@ If you wanna verify the API you can use Postman to send HTTP requests to your AP
     ├── productService.js
     └── videoService.js
 ```
-## Database Structure
-### Collections
-#### Comment Collection
-The 'comment' collection stores comments made by users on videos and products. Each document in the collection represents a single comment and contains the following fields:
+## Database Schema
 
-- username (String, required): The username of the user who made the comment.
-- comment (String, required): The actual comment text.
-- timestamp (Date, default: Date.now): The date and time when the comment was made. It defaults to the current date and time if not provided.
-- videoId (String, required): The ID of the video to which the comment is associated. This field establishes a relationship between the comment and the corresponding video.
+### Videos Collection
 
-#### Product Collection
-The 'product' collection stores information about products related to videos. Each document in the collection represents a single product and contains the following fields:
+The `videos` collection is designed to store information about the videos featured on the platform. Each document in this collection includes the following fields:
 
-- title (String, required): The title or name of the product.
-- productUrl (String, required): The URL or link to the product.
-- price (Number, required): The price of the product.
-- videoId (String, required): The ID of the video with which the product is associated. This field establishes a relationship between the product and the corresponding video.
+- `urlImgThumbnail`: URL of the video thumbnail image.
+- `videoUrl`: Embedded YouTube video URL.
+- `videoTitle`: Title of the video.
+- `videoOwner`: Name of the video owner.
+- `videoViews`: Number of video views.
 
-#### Video Collection
-The 'video' collection stores information about videos. Each document in the collection represents a single video and contains the following fields:
+**Example Document:**
 
-- urlImgThumbnail (String, required): The URL of the video's thumbnail image. This field holds the link to the thumbnail image used to represent the video.
+```json
+{
+  "urlImgThumbnail": "https://i.pinimg.com/564x/4c/9a/b8/4c9ab8c37b93ef118defe2b2616a2ba8.jpg",
+  "videoUrl": "https://www.youtube.com/embed/X5EXTKMnDuA",
+  "videoTitle": "Diskon Sepatu Edisi HUT RI",
+  "videoOwner": "Pentella",
+  "videoViews": 1
+}
+```
+
+### Products Collection
+
+The `products` collection is utilized to store information about products associated with the videos on the platform. Each document in this collection contains these fields:
+
+- `title`: Product title.
+- `productUrl`: E-commerce product URL.
+- `productImg`: Product image URL.
+- `storeName`: Store or seller name.
+- `price`: Product price.
+- `videoId`: ID of the video associated with this product.
+
+**Example Document:**
+
+```json
+{
+  "title": "Sepatu Casual",
+  "productUrl": "https://www.tokopedia.com/footstepfootwear/footstep-footwear-sepatu-loafers-pria-casual-patra-boat-shoes-boat-39",
+  "productImg": "https://images.tokopedia.net/img/cache/900/VqbcmM/2022/8/22/a2b86d0e-99c1-4e65-95b2-b6e80c5f90b6.jpg",
+  "storeName": "Pentella",
+  "price": "325000",
+  "videoId": "64df1c887d5a29001cd13069"
+}
+```
+
+### Comments Collection
+
+The `comments` collection is used to store comments left by users on the platform's videos. Each document in this collection consists of these fields:
+
+- `username`: Name of the user who left the comment.
+- `comment`: Comment content.
+- `timestamp`: Time when the comment was made.
+- `videoId`: ID of the video to which this comment is related.
+
+**Example Document:**
+
+```json
+{
+  "username": "Rafi",
+  "comment": "Sepatu nya murah dan bagus",
+  "timestamp": "2023-08-19T09:44:31.880Z",
+  "videoId": "64df1c887d5a29001cd13069",
+}
+```
+
 
 ## API structure
 **GET /api/videos/**
